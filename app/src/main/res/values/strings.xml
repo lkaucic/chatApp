@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="no_account">Don\'t have an account? <b>Sign Up</b></string>
+    <string name="yes_account">Already have an account? <b>Log In</b></string>
+</resources>
