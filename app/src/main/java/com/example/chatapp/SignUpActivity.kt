@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.example.chatapp.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -24,20 +26,19 @@ class SignUpActivity : AppCompatActivity() {
 
     //firebaseAuth
     private lateinit var firebaseAuth: FirebaseAuth
+
+    //firebaseDatabase
+    private lateinit var usersDb: DatabaseReference
+
     private var email = ""
     private var password = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //configure action bar
-        actionBar = supportActionBar!!
-        actionBar.title="Sign Up"
-        //enable back button
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setDisplayShowHomeEnabled(true)
 
         //configure progressDialog
         progressDialog = ProgressDialog(this)
@@ -56,6 +57,7 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.YesAccount.setOnClickListener{
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 
@@ -95,8 +97,8 @@ class SignUpActivity : AppCompatActivity() {
                 val currentUser = firebaseAuth.currentUser
                 var email = currentUser!!.email
                 Toast.makeText(this, "Account created with email $email", Toast.LENGTH_SHORT).show()
-
-                startActivity(Intent(this, ProfileActivity::class.java))
+                addUserToDatabase(email,firebaseAuth.currentUser?.uid!!)
+                startActivity(Intent(this, ConversationsActivity::class.java))
                 finish()
 
             }
@@ -104,6 +106,12 @@ class SignUpActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "SignUp Failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun addUserToDatabase(email: String?, uid: String) {
+        usersDb = FirebaseDatabase.getInstance().getReference()
+
+        usersDb.child("user").child(uid).setValue(User(email,uid))
     }
 
     override fun onSupportNavigateUp(): Boolean {

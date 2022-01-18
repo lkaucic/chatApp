@@ -23,8 +23,6 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        actionBar = supportActionBar!!
-        actionBar.title = "Profile"
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()

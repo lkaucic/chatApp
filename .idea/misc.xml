@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/curved_shape.xml" value="0.228125" />
+        <entry key="app/src/main/res/drawable/message_box_background.xml" value="0.228125" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/layout/activity_conversations.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/curved_shape.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/layout/recieved_message.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/layout/sent_message.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/layout/user_layout.xml" value="0.2703125" />
+        <entry key="app/src/main/res/menu/main_dropdown.xml" value="0.21197916666666666" />
       </map>
     </option>
   </component>

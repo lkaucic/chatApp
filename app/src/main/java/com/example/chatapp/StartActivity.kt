@@ -13,6 +13,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class StartActivity : AppCompatActivity() {
 
@@ -21,6 +23,7 @@ class StartActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient : GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var usersDb: DatabaseReference
 
     //constants
     private companion object{
@@ -51,6 +54,14 @@ class StartActivity : AppCompatActivity() {
             val intent = googleSignInClient.signInIntent
             startActivityForResult(intent, RC_SIGN_IN)
 
+        }
+
+        binding.loginBtn1.setOnClickListener{
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        binding.signUpBtn1.setOnClickListener {
+            startActivity(Intent(this,SignUpActivity::class.java))
         }
     }
 
@@ -97,6 +108,7 @@ class StartActivity : AppCompatActivity() {
 
                 Log.d(TAG, "firebaseAuthWithGoogleAccount: Uid: $uid")
                 Log.d(TAG, "firebaseAuthWithGoogleAccount: Email: $email")
+                addUserToDatabase(email,uid)
 
                 if(authResult.additionalUserInfo!!.isNewUser){
                     Log.d(TAG, "firebaseAuthWithGoogleAccount: Account created...")
@@ -113,5 +125,11 @@ class StartActivity : AppCompatActivity() {
                 Log.d(TAG,"firebaseAuthWithGoogleAccount: Log in failed ${e.message}")
                 Toast.makeText(this@StartActivity, "Failure: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun addUserToDatabase(email: String?, uid: String) {
+        usersDb = FirebaseDatabase.getInstance().getReference()
+
+        usersDb.child("user").child(uid).setValue(User(email,uid))
     }
 }

@@ -32,10 +32,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //configure actionBar
-        actionBar = supportActionBar!!
-        actionBar.title="Login"
-
         //configure progess dialog
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait")
@@ -49,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         //handle no_account text click  ==> opens profile
         binding.noAccount.setOnClickListener{
             startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
         }
 
         //handle click, begin login
@@ -86,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                 val currentUser = firebaseAuth.currentUser
                 val email = currentUser!!.email
                 Toast.makeText(this, "Logged In as $email", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, ProfileActivity::class.java))
+                startActivity(Intent(this, ConversationsActivity::class.java))
                 finish()
             }
             .addOnFailureListener { e->

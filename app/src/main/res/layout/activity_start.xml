@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/iconIv"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="265dp"
+        android:layout_height="258dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/googlelogo"/>
+        android:src="@drawable/chaticon" />
 
 
     <com.shobhitpuri.custombuttons.GoogleSignInButton
@@ -22,5 +22,23 @@
         android:layout_centerInParent="true"
         android:text="@string/continue_with_google"
         app:isDarkTheme="false" />
+
+    <Button
+        android:id="@+id/loginBtn1"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/googleBtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:text="LOG IN" />
+
+    <Button
+        android:id="@+id/signUpBtn1"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginBtn1"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:text="SIGN UP" />
 
 </RelativeLayout>
