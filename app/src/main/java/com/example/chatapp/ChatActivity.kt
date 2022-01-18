@@ -21,7 +21,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var messageList: ArrayList<Message>
     private lateinit var dbRef: DatabaseReference
 
-    var recieverRoom: String? = null
+    var receiverRoom: String? = null
     var senderRoom: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,14 +30,14 @@ class ChatActivity : AppCompatActivity() {
 
 
         val email = intent.getStringExtra("email")
+        val receiverUid = intent.getStringExtra("uid")
 
-        val recieverUid = intent.getStringExtra("uid")
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
 
         dbRef = FirebaseDatabase.getInstance().getReference()
 
-        senderRoom = recieverUid + senderUid
-        recieverRoom = senderUid + recieverUid
+        senderRoom = receiverUid + senderUid
+        receiverRoom = senderUid + receiverUid
 
         supportActionBar?.title = email
 
@@ -68,6 +68,8 @@ class ChatActivity : AppCompatActivity() {
 
         })
 
+
+
         //add message to database
         sendBtn.setOnClickListener{
             val message =  editMessage.text.toString()
@@ -75,7 +77,7 @@ class ChatActivity : AppCompatActivity() {
 
             dbRef.child("chats").child(senderRoom!!).child("messages").push()
                 .setValue(messageObj).addOnSuccessListener {
-                    dbRef.child("chats").child(recieverRoom!!).child("messages").push()
+                    dbRef.child("chats").child(receiverRoom!!).child("messages").push()
                         .setValue(messageObj)
                 }
             editMessage.setText("")
