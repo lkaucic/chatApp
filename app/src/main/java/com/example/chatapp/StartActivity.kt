@@ -70,7 +70,7 @@ class StartActivity : AppCompatActivity() {
         val currentUser = firebaseAuth.currentUser
         if(currentUser != null){
             //already logged in
-            startActivity(Intent(this@StartActivity, ProfileActivity::class.java))
+            startActivity(Intent(this@StartActivity, ConversationsActivity::class.java))
             finish()
         }
     }
@@ -105,6 +105,7 @@ class StartActivity : AppCompatActivity() {
                 val currentUser = firebaseAuth.currentUser
                 val uid = currentUser!!.uid
                 val email = currentUser!!.email
+
 
                 Log.d(TAG, "firebaseAuthWithGoogleAccount: Uid: $uid")
                 Log.d(TAG, "firebaseAuthWithGoogleAccount: Email: $email")

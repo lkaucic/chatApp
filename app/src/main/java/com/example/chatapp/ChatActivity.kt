@@ -72,15 +72,16 @@ class ChatActivity : AppCompatActivity() {
 
         //add message to database
         sendBtn.setOnClickListener{
-            val message =  editMessage.text.toString()
+            val message =  editMessage.text.toString().trim()
             val messageObj = Message(message,senderUid)
-
-            dbRef.child("chats").child(senderRoom!!).child("messages").push()
-                .setValue(messageObj).addOnSuccessListener {
-                    dbRef.child("chats").child(receiverRoom!!).child("messages").push()
-                        .setValue(messageObj)
-                }
-            editMessage.setText("")
+            if(message != "") {
+                dbRef.child("chats").child(senderRoom!!).child("messages").push()
+                    .setValue(messageObj).addOnSuccessListener {
+                        dbRef.child("chats").child(receiverRoom!!).child("messages").push()
+                            .setValue(messageObj)
+                    }
+                editMessage.setText("")
+            }
         }
 
 

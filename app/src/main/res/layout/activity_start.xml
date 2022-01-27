@@ -20,6 +20,7 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@drawable/curved_shape"
         android:text="@string/continue_with_google"
         app:isDarkTheme="false" />
 
@@ -28,6 +29,7 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/googleBtn"
+        android:background="@drawable/curved_shape"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"
         android:text="LOG IN" />
@@ -36,6 +38,7 @@
         android:id="@+id/signUpBtn1"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/curved_shape"
         android:layout_below="@id/loginBtn1"
         android:layout_centerInParent="true"
         android:layout_marginTop="15dp"
