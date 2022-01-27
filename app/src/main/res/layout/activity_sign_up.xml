@@ -66,6 +66,7 @@
     <Button
         android:id="@+id/signUpBtn"
         android:layout_width="match_parent"
+        android:background="@drawable/curved_shape"
         android:layout_height="wrap_content"
         android:layout_below="@id/NewPasswordTil"
         android:layout_marginLeft="120dp"

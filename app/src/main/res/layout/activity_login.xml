@@ -67,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="120dp"
+        android:background="@drawable/curved_shape"
         android:layout_marginLeft="120dp"
         android:text="LOG IN"
         android:layout_below="@id/passwordTil"

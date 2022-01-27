@@ -33,6 +33,8 @@ class ConversationsActivity : AppCompatActivity() {
         userRV.layoutManager = LinearLayoutManager(this)
         userRV.adapter = adapter
 
+
+
         usersDb.child("user").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
